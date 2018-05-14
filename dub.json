@@ -1,58 +1,61 @@
 {
-	"name": "multihash",
-	"authors": [
-		"Eliott Dumeix",
-		"Oliver Weichhold",
-		"Satoshi Nakamoto",
-		"The Bitcoin developers",
-		"Thomas Pornin",
-		"others..."
-	],
-	"description": "D binding for multihash library exposed by Oliver Weichhold for coinfoundry project",
-	"copyright": "Copyright © 2018, Eliott Dumeix",
-	"license": "MIT",
-	"targetType": "library",
-	"configurations": [
-		{
-			"name": "static",
-			"platforms": ["linux"],
-			"preBuildCommands": [
-              	"make -C ./lib/libmultihash libmultihash.a"
-            ],
-            "importPaths": ["lib/libmultihash"],
-            "lflags": ["-Llib/libmultihash"],
-            "libs": [
-              	"multihash",
-              	"sodium",
-				"stdc++"
-            ],
-            "systemDependencies": "sodium-devel"
-		},
-		{
-			"name": "shared",
-			"platforms": ["linux"],
-			"libs": [
-				"multihash",
-				"sodium",
-				"stdc++"
-			],
-			"systemDependencies": "sodium-devel"
-		},
-		{
-			"name": "unittest",
-			"dependencies": {
-				"dunit": "~>1.0.14"
-			},
-			"platforms": ["linux"],
-			"preBuildCommands": ["make -C ./lib/libmultihash libmultihash.a"],
-            "importPaths": ["lib/libmultihash"],
-            "lflags": ["-Llib/libmultihash"],
-            "libs": [
-              "multihash",
-              "sodium",
-				"stdc++"
-            ],
-            "systemDependencies": "sodium-devel"
-		}
-	]
+  "name": "multihash",
+  "authors":[
+    "Eliott Dumeix",
+    "Oliver Weichhold",
+    "Satoshi Nakamoto",
+    "The Bitcoin developers",
+    "Thomas Pornin",
+    "others..."
+  ],
+  "systemDependencies":"sodium-devel",
+  "description": "D binding for multihash library exposed by Oliver Weichhold for coinfoundry project",
+  "copyright": "Copyright © 2018, Eliott Dumeix",
+  "license": "MIT",
+  "targetType": "library",
+  "systemDependencies": "boost-devel",
+  "configurations": [
+    {
+      "name": "static",
+      "platforms": ["linux"],
+      "preBuildCommands": [
+        "make -C $PACKAGE_DIR/lib/libmultihash libmultihash.a"
+      ],
+      "importPaths": ["lib/libmultihash"],
+      "lflags": ["-L$PACKAGE_DIR/lib/libmultihash/"],
+      "libs": [
+        "multihash",
+        "dl",
+        "boost_system",
+        "boost_date_time",
+        "stdc++"
+      ]
+    },
+    {
+      "name": "shared",
+      "platforms": ["linux"],
+      "libs": [
+        "multihash",
+        "dl",
+        "sodium",
+        "stdc++"
+      ]
+    },
+    {
+      "name": "unittest",
+      "dependencies": {"dunit": "~>1.0.14"},
+      "platforms": ["linux"],
+      "preBuildCommands": [
+        "make -C $PACKAGE_DIR/lib/libmultihash libmultihash.a"
+      ],
+      "importPaths": ["lib/libmultihash"],
+      "lflags": ["-L$PACKAGE_DIR/lib/libmultihash/"],
+      "libs": [
+        "multihash",
+        "dl",
+        "sodium",
+        "stdc++"
+      ]
+    }
+  ]
 }

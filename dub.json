@@ -21,7 +21,6 @@
       "preBuildCommands": [
         "make -C $PACKAGE_DIR/lib/libmultihash libmultihash.a"
       ],
-      "importPaths": ["lib/libmultihash"],
       "lflags": ["-L$PACKAGE_DIR/lib/libmultihash/"],
       "libs": [
         "multihash",
@@ -48,7 +47,6 @@
       "preBuildCommands": [
         "make -C $PACKAGE_DIR/lib/libmultihash libmultihash.a"
       ],
-      "importPaths": ["lib/libmultihash"],
       "lflags": ["-L$PACKAGE_DIR/lib/libmultihash/"],
       "libs": [
         "multihash",

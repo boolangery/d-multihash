@@ -1,5 +1,7 @@
 # d-multihash
 
+[![DUB Package](https://img.shields.io/dub/v/multihash.svg)](https://code.dlang.org/packages/multihash)
+
 `d-multihash` is a binding of multihash C++ library exposed by Oliver Weichhold for coinfoundry/miningcore project.
 
 
